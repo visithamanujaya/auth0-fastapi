@@ -1,0 +1,14 @@
+click==7.1.2
+ecdsa==0.14.1
+fastapi==0.61.1
+h11==0.11.0
+pip==19.0.3
+pyasn1==0.4.8
+pydantic==1.6.1
+python-jose==3.2.0
+rsa==4.6
+setuptools==40.8.0
+six==1.15.0
+starlette==0.13.6
+typing-extensions==3.7.4.3
+uvicorn==0.12.1
