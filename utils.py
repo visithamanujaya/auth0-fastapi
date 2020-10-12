@@ -43,14 +43,14 @@ async def requires_auth(token):
                 audience=API_AUDIENCE,
                 issuer="https://" + AUTH0_DOMAIN + "/"
             )
-            ######################################
-            print(user)  # Remove this debug log #
-            ######################################
+            ###########################################
+            print(user)  # Remove this debug log TODO #
+            ###########################################
 
             return User(iss=str(user['iss']), sub=str(user['sub']),
                         aud=str(user['aud']), iat=str(user['iat']),
                         euserp=str(user['exp']), azp=str(user['azp']),
-                        scope=str(user['scope']), roles=json.dumps(user['http://viz.mn/roles']))
+                        scope=str(user['scope']), roles=json.dumps(user['http://roles.ggt/roles']))
         except jwt.ExpiredSignatureError:
             raise AuthError({"code": "token_expired",
                              "description": "token is expired"}, 401)

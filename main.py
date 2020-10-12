@@ -52,44 +52,44 @@ async def protected_api(user: str = Depends(get_current_user)):
 
     if user and user.roles:
         roles = json.loads(user.roles)
-        if 'Default' in roles:
-            return {"message": "Hi Default User..!"}
-        if 'Admin' in roles:
-            return {"message": "Hi Admin User..!"}
+        if 'Care Provider' in roles:
+            return {"message": "Hi Care Provider User..!"}
+        if 'Site Admin' in roles:
+            return {"message": "Hi Site Admin User..!"}
         if 'Super' in roles:
             return {"message": "Hi Super User..!"}
 
-    raise HTTPException(status_code=403, detail="You are not allowed here....!")
+    raise HTTPException(status_code=401, detail="You are not allowed here....!")
 
 
 #######################################################
-# Sample protected Admin and above only API end point #
+# Sample protected Site Admin and above only API end point #
 #######################################################
 @app.get("/role-based/protected/api/admin")
 async def protected_api(user: str = Depends(get_current_user)):
 
     if user and user.roles:
         roles = json.loads(user.roles)
-        if 'Admin' in roles:
-            return {"message": "Hi Admin User..!"}
-        if 'Super' in roles:
-            return {"message": "Hi Super User..!"}
+        if 'Site Admin' in roles:
+            return {"message": "Hi Site Admin User..!"}
+        if 'Super Admin' in roles:
+            return {"message": "Hi Super Admin User..!"}
 
-    raise HTTPException(status_code=403, detail="You are not allowed here....!")
+    raise HTTPException(status_code=401, detail="You are not allowed here....!")
 
 
 #######################################################
-# Sample protected Super only API end point           #
+# Sample protected Super Admin only API end point           #
 #######################################################
 @app.get("/role-based/protected/api/super")
 async def protected_api(user: str = Depends(get_current_user)):
 
     if user and user.roles:
         roles = json.loads(user.roles)
-        if 'Super' in roles:
-            return {"message": "Hi Super user...!"}
+        if 'Super Admin' in roles:
+            return {"message": "Hi Super Admin user...!"}
 
-    raise HTTPException(status_code=403, detail="You are not allowed here....!")
+    raise HTTPException(status_code=401, detail="You are not allowed here....!")
 
 
 if __name__ == "__main__":
